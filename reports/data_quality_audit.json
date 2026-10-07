@@ -1,0 +1,124 @@
+{
+    "dataset_metrics": {
+        "total_rows": 7111,
+        "total_columns": 21,
+        "exact_duplicate_rows": 20,
+        "duplicate_customer_ids": 68
+    },
+    "missing_values": {
+        "total_columns_with_missing": 17,
+        "columns_detail": {
+            "Dependents": {
+                "missing_count": 7,
+                "missing_pct": 0.098
+            },
+            "tenure": {
+                "missing_count": 7,
+                "missing_pct": 0.098
+            },
+            "PhoneService": {
+                "missing_count": 13,
+                "missing_pct": 0.183
+            },
+            "MultipleLines": {
+                "missing_count": 13,
+                "missing_pct": 0.183
+            },
+            "InternetService": {
+                "missing_count": 17,
+                "missing_pct": 0.239
+            },
+            "OnlineSecurity": {
+                "missing_count": 16,
+                "missing_pct": 0.225
+            },
+            "OnlineBackup": {
+                "missing_count": 9,
+                "missing_pct": 0.127
+            },
+            "DeviceProtection": {
+                "missing_count": 20,
+                "missing_pct": 0.281
+            },
+            "TechSupport": {
+                "missing_count": 27,
+                "missing_pct": 0.38
+            },
+            "StreamingTV": {
+                "missing_count": 27,
+                "missing_pct": 0.38
+            },
+            "StreamingMovies": {
+                "missing_count": 27,
+                "missing_pct": 0.38
+            },
+            "Contract": {
+                "missing_count": 29,
+                "missing_pct": 0.408
+            },
+            "PaperlessBilling": {
+                "missing_count": 16,
+                "missing_pct": 0.225
+            },
+            "PaymentMethod": {
+                "missing_count": 16,
+                "missing_pct": 0.225
+            },
+            "MonthlyCharges": {
+                "missing_count": 18,
+                "missing_pct": 0.253
+            },
+            "TotalCharges": {
+                "missing_count": 72,
+                "missing_pct": 1.013
+            },
+            "Churn": {
+                "missing_count": 72,
+                "missing_pct": 1.013
+            }
+        }
+    },
+    "whitespace_anomalies": {
+        "columns_with_whitespace": {},
+        "total_charges_blanks": 11,
+        "tenure_zero_total_charges_blanks": 11
+    },
+    "target_analysis": {
+        "target_column": "Churn",
+        "counts": {
+            "No": 5166,
+            "Yes": 1873,
+            "nan": 72
+        },
+        "percentages": {
+            "No": 72.65,
+            "Yes": 26.34,
+            "nan": 1.01
+        },
+        "missing_target_rows": 72,
+        "imbalance_ratio": "72.65% No vs 26.34% Yes"
+    },
+    "feature_data_types": {
+        "customerID": "str",
+        "gender": "str",
+        "SeniorCitizen": "int64",
+        "Partner": "str",
+        "Dependents": "str",
+        "tenure": "float64",
+        "PhoneService": "str",
+        "MultipleLines": "str",
+        "InternetService": "str",
+        "OnlineSecurity": "str",
+        "OnlineBackup": "str",
+        "DeviceProtection": "str",
+        "TechSupport": "str",
+        "StreamingTV": "str",
+        "StreamingMovies": "str",
+        "Contract": "str",
+        "PaperlessBilling": "str",
+        "PaymentMethod": "str",
+        "MonthlyCharges": "float64",
+        "TotalCharges": "str",
+        "Churn": "str"
+    }
+}

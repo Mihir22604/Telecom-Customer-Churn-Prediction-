@@ -1,0 +1,8 @@
+.env
+venv/
+test_env/
+__pycache__/
+*.pyc
+logs/
+.ipynb_checkpoints/
+Instruction file.docx

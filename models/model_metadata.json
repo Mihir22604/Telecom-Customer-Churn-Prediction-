@@ -1,0 +1,61 @@
+{
+    "model_name": "LightGBMChurnClassifier",
+    "model_version": "1.0.0",
+    "training_timestamp": "2026-10-07T06:20:19Z",
+    "algorithm": "LightGBM",
+    "best_hyperparameters": {
+        "class_weight": "balanced",
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.01,
+        "max_depth": 5,
+        "n_estimators": 100,
+        "subsample": 0.8
+    },
+    "feature_count": 28,
+    "feature_names": [
+        "gender",
+        "SeniorCitizen",
+        "Partner",
+        "Dependents",
+        "tenure",
+        "PaperlessBilling",
+        "MonthlyCharges",
+        "TotalCharges",
+        "AvgMonthlyChargeRatio",
+        "MonthlyToTotalRatio",
+        "TotalServicesCount",
+        "IsAutomaticPayment",
+        "Contract_One year",
+        "Contract_Two year",
+        "InternetService_Fiber optic",
+        "PaymentMethod_Credit card (automatic)",
+        "PaymentMethod_Electronic check",
+        "MultipleLines_Yes",
+        "OnlineSecurity_Yes",
+        "OnlineBackup_No internet service",
+        "OnlineBackup_Yes",
+        "DeviceProtection_Yes",
+        "TechSupport_Yes",
+        "StreamingTV_No internet service",
+        "StreamingTV_Yes",
+        "StreamingMovies_No internet service",
+        "StreamingMovies_Yes",
+        "TenureCohort_48-72m"
+    ],
+    "test_set_metrics": {
+        "Accuracy": 0.742165,
+        "Precision": 0.509402,
+        "Recall": 0.798928,
+        "F1_Score": 0.622129,
+        "ROC_AUC": 0.841495
+    },
+    "artifacts": {
+        "preprocessing_pipeline": "models/preprocessing_pipeline.joblib",
+        "best_churn_model": "models/best_churn_model.joblib",
+        "full_inference_pipeline": "models/full_inference_pipeline.joblib",
+        "unified_churn_pipeline": "models/unified_churn_pipeline.joblib"
+    },
+    "sklearn_version": "1.6.1",
+    "lightgbm_version": "4.7.0",
+    "joblib_version": "1.4.2"
+}

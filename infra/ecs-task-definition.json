@@ -1,0 +1,79 @@
+{
+  "family": "telecom-churn-system",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::123456789012:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::123456789012:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "telecom-api",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/telecom-churn-api:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "APP_ENV", "value": "production" },
+        { "name": "API_HOST", "value": "0.0.0.0" },
+        { "name": "API_PORT", "value": "8000" },
+        { "name": "LOG_LEVEL", "value": "INFO" },
+        { "name": "LOG_FORMAT", "value": "json" },
+        { "name": "MODEL_VERSION", "value": "1.0.0" },
+        { "name": "CORS_ORIGINS", "value": "*" }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 15
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/telecom-churn-system",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "api"
+        }
+      }
+    },
+    {
+      "name": "telecom-ui",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/telecom-churn-ui:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8501,
+          "hostPort": 8501,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "FASTAPI_URL", "value": "http://127.0.0.1:8000" },
+        { "name": "STREAMLIT_SERVER_PORT", "value": "8501" },
+        { "name": "STREAMLIT_SERVER_ADDRESS", "value": "0.0.0.0" }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8501/_stcore/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 15
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/telecom-churn-system",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ui"
+        }
+      }
+    }
+  ]
+}

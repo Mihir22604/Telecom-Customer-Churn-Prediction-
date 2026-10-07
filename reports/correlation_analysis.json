@@ -1,0 +1,104 @@
+{
+    "pearson_correlation": {
+        "tenure": {
+            "tenure": 1.0,
+            "MonthlyCharges": 0.2485,
+            "TotalCharges": 0.8258,
+            "SeniorCitizen": 0.0169,
+            "Churn_Encoded": -0.3527
+        },
+        "MonthlyCharges": {
+            "tenure": 0.2485,
+            "MonthlyCharges": 1.0,
+            "TotalCharges": 0.6515,
+            "SeniorCitizen": 0.2202,
+            "Churn_Encoded": 0.1937
+        },
+        "TotalCharges": {
+            "tenure": 0.8258,
+            "MonthlyCharges": 0.6515,
+            "TotalCharges": 1.0,
+            "SeniorCitizen": 0.1027,
+            "Churn_Encoded": -0.1987
+        },
+        "SeniorCitizen": {
+            "tenure": 0.0169,
+            "MonthlyCharges": 0.2202,
+            "TotalCharges": 0.1027,
+            "SeniorCitizen": 1.0,
+            "Churn_Encoded": 0.1493
+        },
+        "Churn_Encoded": {
+            "tenure": -0.3527,
+            "MonthlyCharges": 0.1937,
+            "TotalCharges": -0.1987,
+            "SeniorCitizen": 0.1493,
+            "Churn_Encoded": 1.0
+        }
+    },
+    "spearman_correlation": {
+        "tenure": {
+            "tenure": 1.0,
+            "MonthlyCharges": 0.2771,
+            "TotalCharges": 0.8893,
+            "SeniorCitizen": 0.0188,
+            "Churn_Encoded": -0.3677
+        },
+        "MonthlyCharges": {
+            "tenure": 0.2771,
+            "MonthlyCharges": 1.0,
+            "TotalCharges": 0.6385,
+            "SeniorCitizen": 0.2212,
+            "Churn_Encoded": 0.185
+        },
+        "TotalCharges": {
+            "tenure": 0.8893,
+            "MonthlyCharges": 0.6385,
+            "TotalCharges": 1.0,
+            "SeniorCitizen": 0.1079,
+            "Churn_Encoded": -0.2304
+        },
+        "SeniorCitizen": {
+            "tenure": 0.0188,
+            "MonthlyCharges": 0.2212,
+            "TotalCharges": 0.1079,
+            "SeniorCitizen": 1.0,
+            "Churn_Encoded": 0.1493
+        },
+        "Churn_Encoded": {
+            "tenure": -0.3677,
+            "MonthlyCharges": 0.185,
+            "TotalCharges": -0.2304,
+            "SeniorCitizen": 0.1493,
+            "Churn_Encoded": 1.0
+        }
+    },
+    "vif_scores": {
+        "tenure": 5.797,
+        "MonthlyCharges": 3.204,
+        "TotalCharges": 9.45
+    },
+    "high_correlation_pairs": [
+        {
+            "feature_1": "tenure",
+            "feature_2": "TotalCharges",
+            "pearson_corr": 0.8258,
+            "spearman_corr": 0.8893,
+            "interpretation": "Strong positive collinearity since TotalCharges is lifetime accumulated charges over tenure."
+        },
+        {
+            "feature_1": "MonthlyCharges",
+            "feature_2": "TotalCharges",
+            "pearson_corr": 0.6515,
+            "spearman_corr": 0.6385,
+            "interpretation": "Moderate-high positive correlation since TotalCharges scales with MonthlyCharges."
+        }
+    ],
+    "target_correlations_with_churn": {
+        "tenure": -0.3527,
+        "MonthlyCharges": 0.1937,
+        "TotalCharges": -0.1987,
+        "SeniorCitizen": 0.1493
+    },
+    "multicollinearity_recommendation": "TotalCharges exhibits high VIF (> 8.0) and high correlation with tenure (r = 0.826). Tree-based models (Random Forest, XGBoost) natively handle collinearity and should retain all features. For linear models (Logistic Regression), regularization (L1/L2 penalty) or feature pruning/ratio feature engineering should be evaluated."
+}

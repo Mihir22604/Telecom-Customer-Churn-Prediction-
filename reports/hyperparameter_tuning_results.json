@@ -1,0 +1,21 @@
+{
+    "LightGBM": {
+        "best_f1": 0.6342852536496991,
+        "params": {
+            "subsample": 0.8,
+            "n_estimators": 100,
+            "max_depth": 5,
+            "learning_rate": 0.01,
+            "colsample_bytree": 0.7,
+            "class_weight": "balanced"
+        }
+    },
+    "LogisticRegression": {
+        "best_f1": 0.6334376604132563,
+        "params": {
+            "C": 1,
+            "class_weight": "balanced",
+            "solver": "lbfgs"
+        }
+    }
+}

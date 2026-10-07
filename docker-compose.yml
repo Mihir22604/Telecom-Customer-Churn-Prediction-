@@ -1,0 +1,53 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: telecom_churn_api
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - LOG_LEVEL=INFO
+      - LOG_FORMAT=standard
+      - CORS_ORIGINS=*
+      - MODEL_VERSION=1.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+    networks:
+      - telecom-network
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: telecom_churn_ui
+    ports:
+      - "8501:8501"
+    environment:
+      - FASTAPI_URL=http://api:8000
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped
+    networks:
+      - telecom-network
+
+networks:
+  telecom-network:
+    driver: bridge

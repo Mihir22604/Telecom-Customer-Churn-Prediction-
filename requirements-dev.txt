@@ -1,0 +1,36 @@
+# ==============================================================================
+# Telecom Customer Churn Prediction & Retention System - Dependencies
+# ==============================================================================
+
+# Core Data Manipulation & Mathematics
+numpy>=1.26.0
+pandas>=2.1.0
+scipy>=1.11.0
+
+# Machine Learning & Modeling
+scikit-learn>=1.4.0
+lightgbm>=4.3.0
+xgboost>=2.0.0
+joblib>=1.3.0
+
+# Exploratory Data Analysis & Visualization
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Backend REST API (FastAPI)
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.6.0
+requests>=2.31.0
+httpx>=0.27.0
+
+# Frontend Web Application (Streamlit)
+streamlit>=1.31.0
+
+# Testing & Quality Assurance
+pytest>=7.4.0
+
+# Production Operations & Observability
+python-dotenv>=1.0.0
+psutil>=5.9.0
+
