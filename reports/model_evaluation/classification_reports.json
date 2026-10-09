@@ -1,0 +1,227 @@
+{
+    "Logistic Regression": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.84      0.90      0.87      1031\n       Churn       0.66      0.51      0.58       373\n\n    accuracy                           0.80      1404\n   macro avg       0.75      0.71      0.72      1404\nweighted avg       0.79      0.80      0.79      1404\n",
+        "metrics": {
+            "accuracy": 0.8012820512820513,
+            "roc_auc": 0.8433858691553789,
+            "churn_precision": 0.6620689655172414,
+            "churn_recall": 0.514745308310992,
+            "churn_f1": 0.579185520361991,
+            "no_churn_precision": 0.8375224416517055,
+            "no_churn_recall": 0.9049466537342385,
+            "no_churn_f1": 0.8699300699300699,
+            "macro_precision": 0.7497957035844734,
+            "macro_recall": 0.7098459810226152,
+            "macro_f1": 0.7245577951460305,
+            "weighted_precision": 0.7909098016245295,
+            "weighted_recall": 0.8012820512820513,
+            "weighted_f1": 0.792688106262767,
+            "train_time_s": 0.0722922999993898,
+            "inference_time_ms": 2.9363000066950917
+        },
+        "confusion_matrix": [
+            [
+                933,
+                98
+            ],
+            [
+                181,
+                192
+            ]
+        ]
+    },
+    "Decision Tree": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.82      0.80      0.81      1031\n       Churn       0.49      0.52      0.51       373\n\n    accuracy                           0.73      1404\n   macro avg       0.66      0.66      0.66      1404\nweighted avg       0.73      0.73      0.73      1404\n",
+        "metrics": {
+            "accuracy": 0.7279202279202279,
+            "roc_auc": 0.6628328778379615,
+            "churn_precision": 0.48872180451127817,
+            "churn_recall": 0.5227882037533512,
+            "churn_f1": 0.5051813471502591,
+            "no_churn_precision": 0.8228855721393035,
+            "no_churn_recall": 0.8021338506304558,
+            "no_churn_f1": 0.81237721021611,
+            "macro_precision": 0.6558036883252908,
+            "macro_recall": 0.6624610271919036,
+            "macro_f1": 0.6587792786831845,
+            "weighted_precision": 0.7341084458392655,
+            "weighted_recall": 0.7279202279202279,
+            "weighted_f1": 0.7307646340597265,
+            "train_time_s": 0.07623430003877729,
+            "inference_time_ms": 2.7286999975331128
+        },
+        "confusion_matrix": [
+            [
+                827,
+                204
+            ],
+            [
+                178,
+                195
+            ]
+        ]
+    },
+    "Random Forest": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.83      0.91      0.87      1031\n       Churn       0.66      0.50      0.57       373\n\n    accuracy                           0.80      1404\n   macro avg       0.75      0.70      0.72      1404\nweighted avg       0.79      0.80      0.79      1404\n",
+        "metrics": {
+            "accuracy": 0.7977207977207977,
+            "roc_auc": 0.8285677509276763,
+            "churn_precision": 0.6583629893238434,
+            "churn_recall": 0.4959785522788204,
+            "churn_f1": 0.5657492354740061,
+            "no_churn_precision": 0.8325912733748887,
+            "no_churn_recall": 0.906886517943744,
+            "no_churn_f1": 0.8681522748375116,
+            "macro_precision": 0.745477131349366,
+            "macro_recall": 0.7014325351112822,
+            "macro_f1": 0.7169507551557588,
+            "weighted_precision": 0.7863041295351166,
+            "weighted_recall": 0.7977207977207977,
+            "weighted_f1": 0.7878130058328197,
+            "train_time_s": 1.3282841999898665,
+            "inference_time_ms": 59.49499999405816
+        },
+        "confusion_matrix": [
+            [
+                935,
+                96
+            ],
+            [
+                188,
+                185
+            ]
+        ]
+    },
+    "XGBoost": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.84      0.88      0.86      1031\n       Churn       0.62      0.53      0.57       373\n\n    accuracy                           0.79      1404\n   macro avg       0.73      0.70      0.71      1404\nweighted avg       0.78      0.79      0.78      1404\n",
+        "metrics": {
+            "accuracy": 0.7884615384615384,
+            "roc_auc": 0.8246685198524039,
+            "churn_precision": 0.620253164556962,
+            "churn_recall": 0.5254691689008043,
+            "churn_f1": 0.5689404934687954,
+            "no_churn_precision": 0.8373161764705882,
+            "no_churn_recall": 0.88360814742968,
+            "no_churn_f1": 0.8598395469561114,
+            "macro_precision": 0.728784670513775,
+            "macro_recall": 0.7045386581652422,
+            "macro_f1": 0.7143900202124533,
+            "weighted_precision": 0.7796491512257288,
+            "weighted_recall": 0.7884615384615384,
+            "weighted_f1": 0.7825565363074156,
+            "train_time_s": 2.169368700007908,
+            "inference_time_ms": 17.710499989334494
+        },
+        "confusion_matrix": [
+            [
+                911,
+                120
+            ],
+            [
+                177,
+                196
+            ]
+        ]
+    },
+    "LightGBM": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.84      0.90      0.87      1031\n       Churn       0.65      0.51      0.57       373\n\n    accuracy                           0.80      1404\n   macro avg       0.74      0.71      0.72      1404\nweighted avg       0.79      0.80      0.79      1404\n",
+        "metrics": {
+            "accuracy": 0.7962962962962963,
+            "roc_auc": 0.8344328497541366,
+            "churn_precision": 0.6464646464646465,
+            "churn_recall": 0.514745308310992,
+            "churn_f1": 0.573134328358209,
+            "no_churn_precision": 0.8364950316169828,
+            "no_churn_recall": 0.8981571290009699,
+            "no_churn_f1": 0.8662301216089804,
+            "macro_precision": 0.7414798390408146,
+            "macro_recall": 0.7064512186559809,
+            "macro_f1": 0.7196822249835947,
+            "weighted_precision": 0.7860097512310702,
+            "weighted_recall": 0.7962962962962963,
+            "weighted_f1": 0.7883635041712754,
+            "train_time_s": 0.23575389996403828,
+            "inference_time_ms": 19.06249998137355
+        },
+        "confusion_matrix": [
+            [
+                926,
+                105
+            ],
+            [
+                181,
+                192
+            ]
+        ]
+    },
+    "Logistic Regression (Tuned)": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.84      0.90      0.87      1031\n       Churn       0.66      0.51      0.58       373\n\n    accuracy                           0.80      1404\n   macro avg       0.75      0.71      0.72      1404\nweighted avg       0.79      0.80      0.79      1404\n",
+        "metrics": {
+            "accuracy": 0.8012820512820513,
+            "roc_auc": 0.843474281197099,
+            "churn_precision": 0.6620689655172414,
+            "churn_recall": 0.514745308310992,
+            "churn_f1": 0.579185520361991,
+            "macro_f1": 0.7245577951460305,
+            "weighted_f1": 0.792688106262767,
+            "train_time_s": 5.2797968000522815,
+            "inference_time_ms": 9.687199955806136
+        },
+        "confusion_matrix": [
+            [
+                933,
+                98
+            ],
+            [
+                181,
+                192
+            ]
+        ],
+        "best_params": {
+            "C": 1.0,
+            "class_weight": null,
+            "l1_ratio": 0.3,
+            "max_iter": 2000,
+            "penalty": "elasticnet",
+            "solver": "saga"
+        },
+        "cv_best_roc_auc": 0.8502800352659353
+    },
+    "LightGBM (Tuned)": {
+        "classification_report": "              precision    recall  f1-score   support\n\n    No-Churn       0.92      0.71      0.80      1031\n       Churn       0.51      0.82      0.62       373\n\n    accuracy                           0.74      1404\n   macro avg       0.71      0.76      0.71      1404\nweighted avg       0.81      0.74      0.75      1404\n",
+        "metrics": {
+            "accuracy": 0.7393162393162394,
+            "roc_auc": 0.842436739883972,
+            "churn_precision": 0.5058043117744611,
+            "churn_recall": 0.8176943699731903,
+            "churn_f1": 0.625,
+            "macro_f1": 0.7126091703056768,
+            "weighted_f1": 0.7536681689247192,
+            "train_time_s": 0.3699176000081934,
+            "inference_time_ms": 47.07509995205328
+        },
+        "confusion_matrix": [
+            [
+                733,
+                298
+            ],
+            [
+                68,
+                305
+            ]
+        ],
+        "best_params": {
+            "subsample": 1.0,
+            "reg_lambda": 0.5,
+            "reg_alpha": 0.0,
+            "num_leaves": 64,
+            "n_estimators": 300,
+            "min_child_samples": 50,
+            "max_depth": 3,
+            "learning_rate": 0.01,
+            "colsample_bytree": 0.9,
+            "class_weight": "balanced"
+        },
+        "cv_best_roc_auc": 0.8471961523163924
+    }
+}

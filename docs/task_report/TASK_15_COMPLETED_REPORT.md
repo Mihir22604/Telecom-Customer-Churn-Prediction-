@@ -26,10 +26,7 @@ Build an interactive, modern web dashboard using Streamlit that enables customer
 ### 2.2 System Sidebar & Health Integration
 - **Live Connection Monitor**: Probes FastAPI `/health` endpoint to show real-time service status, model version, and uptime.
 - **Fail-safe Hybrid Engine**: Automatically queries the FastAPI backend via HTTP; if the backend service is offline, it seamlessly fails over to the local in-memory `ChurnPredictor` so user workflows are never interrupted.
-- **Quick Preset Loader**: Pre-populates the input form with realistic customer profiles:
-  - High Churn Risk (Month-to-month, Fiber optic, No TechSupport, Tenure: 2m)
-  - Low Churn Risk (2-Year contract, DSL, Full Security Bundle, Tenure: 60m)
-  - Moderate Churn Risk (1-Year contract, Partial Services, Tenure: 18m)
+- **Direct Custom Attribute Controls**: Comprehensive sidebar and panel input controls allow users to enter full custom customer profiles directly with validation bounds and immediate reactive updates.
 
 ### 2.3 Dashboard Modules
 
@@ -70,7 +67,7 @@ Build an interactive, modern web dashboard using Streamlit that enables customer
 |---|---|---|
 | **Streamlit Web Application** | `app/streamlit_app.py` | Complete responsive frontend interface |
 | **Inference Integration** | `src/inference.py` | Unified prediction & retention recommendations layer |
-| **Preset Configurations** | Embedded in `streamlit_app.py` | High, medium, and low risk test fixtures |
+| **Custom Input Controls** | Embedded in `streamlit_app.py` | Full demographic, service, and billing parameter controls |
 
 ---
 

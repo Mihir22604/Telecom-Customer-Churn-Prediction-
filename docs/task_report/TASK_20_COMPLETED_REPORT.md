@@ -34,7 +34,7 @@ Every single requirement outlined in `Instruction file.docx` was audited and val
 | **11** | **Final Model Selection** | Rigorous justification selecting LightGBM for superior Recall (79.9%) and sub-3ms latency | **100% COMPLIED** |
 | **12** | **Save the Model** | `joblib` & `.pkl` serialization in `models/`, unified pipeline artifact | **100% COMPLIED** |
 | **13** | **Build an ML API** | FastAPI REST service with `/predict`, `/predict/batch`, `/health`, `/metadata` | **100% COMPLIED** |
-| **14** | **Build a Web UI** | Streamlit interactive UI (`app/streamlit_app.py`) with preset profiles & batch scoring | **100% COMPLIED** |
+| **14** | **Build a Web UI** | Streamlit interactive UI (`app/streamlit_app.py`) with manual custom input form & batch scoring | **100% COMPLIED** |
 | **15** | **Deployment (Docker & AWS)** | `Dockerfile.api`, `Dockerfile.ui`, `docker-compose.yml`, `docs/aws_deployment_guide.md`, ECS task definitions, deployment scripts | **100% COMPLIED** |
 | **16** | **Production Requirements** | Pydantic validation, structured logging, `.env.example`, versioning, `/health` endpoint | **100% COMPLIED** |
 

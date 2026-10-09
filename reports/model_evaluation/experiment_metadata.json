@@ -1,0 +1,94 @@
+{
+    "experiment_date": "2026-10-09T12:18:08Z",
+    "dataset_path": "C:\\Users\\mihir\\Desktop\\Telecom Customer Churn Prediction & Retention System\\data\\processed\\selected_churn_data.csv",
+    "dataset_shape": [
+        7019,
+        30
+    ],
+    "train_shape": [
+        5615,
+        28
+    ],
+    "test_shape": [
+        1404,
+        28
+    ],
+    "churn_rate_train": 0.2657,
+    "churn_rate_test": 0.2657,
+    "random_state": 42,
+    "cv_strategy": "StratifiedKFold(n_splits=5)",
+    "primary_scoring_metric": "roc_auc",
+    "preprocessing": "FeatureScaler \u2014 StandardScaler on 6 continuous features, fitted exclusively on X_train",
+    "data_leakage_prevention": "Preprocessing fitted on X_train only; test set untouched until final evaluation; threshold selection performed on held-out CV validation fold",
+    "candidate_models": [
+        "Logistic Regression",
+        "Decision Tree",
+        "Random Forest",
+        "XGBoost",
+        "LightGBM"
+    ],
+    "tuning": {
+        "Logistic Regression": {
+            "method": "GridSearchCV",
+            "n_candidates_evaluated": 54,
+            "best_params": {
+                "C": 1.0,
+                "class_weight": null,
+                "l1_ratio": 0.3,
+                "max_iter": 2000,
+                "penalty": "elasticnet",
+                "solver": "saga"
+            },
+            "best_cv_roc_auc": 0.85028,
+            "tuning_time_s": 310.26
+        },
+        "LightGBM": {
+            "method": "RandomizedSearchCV(n_iter=60)",
+            "n_candidates_evaluated": 60,
+            "best_params": {
+                "subsample": 1.0,
+                "reg_lambda": 0.5,
+                "reg_alpha": 0.0,
+                "num_leaves": 64,
+                "n_estimators": 300,
+                "min_child_samples": 50,
+                "max_depth": 3,
+                "learning_rate": 0.01,
+                "colsample_bytree": 0.9,
+                "class_weight": "balanced"
+            },
+            "best_cv_roc_auc": 0.847196,
+            "tuning_time_s": 122.47
+        }
+    },
+    "final_selected_model": "LightGBM (Tuned)",
+    "selection_criterion": "Higher Churn Recall with comparable AUC",
+    "test_results_summary": {
+        "lr_baseline": {
+            "accuracy": 0.8013,
+            "roc_auc": 0.8434,
+            "churn_recall": 0.5147,
+            "churn_f1": 0.5792
+        },
+        "lr_tuned": {
+            "accuracy": 0.8013,
+            "roc_auc": 0.8435,
+            "churn_recall": 0.5147,
+            "churn_f1": 0.5792
+        },
+        "lgbm_baseline": {
+            "accuracy": 0.7963,
+            "roc_auc": 0.8344,
+            "churn_recall": 0.5147,
+            "churn_f1": 0.5731
+        },
+        "lgbm_tuned": {
+            "accuracy": 0.7393,
+            "roc_auc": 0.8424,
+            "churn_recall": 0.8177,
+            "churn_f1": 0.625
+        }
+    },
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python_version": "3.12.3"
+}

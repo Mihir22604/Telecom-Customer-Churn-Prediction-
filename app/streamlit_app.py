@@ -84,73 +84,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Preset customer profiles
-PRESET_PROFILES = {
-    "Select a preset...": None,
-    "High Churn Risk (Month-to-Month, Fiber, No Support)": {
-        "gender": "Female",
-        "SeniorCitizen": 0,
-        "Partner": "No",
-        "Dependents": "No",
-        "tenure": 2.0,
-        "PhoneService": "Yes",
-        "MultipleLines": "No",
-        "InternetService": "Fiber optic",
-        "OnlineSecurity": "No",
-        "OnlineBackup": "No",
-        "DeviceProtection": "No",
-        "TechSupport": "No",
-        "StreamingTV": "Yes",
-        "StreamingMovies": "Yes",
-        "Contract": "Month-to-month",
-        "PaperlessBilling": "Yes",
-        "PaymentMethod": "Electronic check",
-        "MonthlyCharges": 95.0,
-        "TotalCharges": 190.0
-    },
-    "Low Churn Risk (2-Year Contract, DSL, Full Bundle)": {
-        "gender": "Male",
-        "SeniorCitizen": 0,
-        "Partner": "Yes",
-        "Dependents": "Yes",
-        "tenure": 60.0,
-        "PhoneService": "Yes",
-        "MultipleLines": "Yes",
-        "InternetService": "DSL",
-        "OnlineSecurity": "Yes",
-        "OnlineBackup": "Yes",
-        "DeviceProtection": "Yes",
-        "TechSupport": "Yes",
-        "StreamingTV": "No",
-        "StreamingMovies": "No",
-        "Contract": "Two year",
-        "PaperlessBilling": "No",
-        "PaymentMethod": "Credit card (automatic)",
-        "MonthlyCharges": 55.0,
-        "TotalCharges": 3300.0
-    },
-    "Moderate Churn Risk (1-Year Contract, Partial Services)": {
-        "gender": "Female",
-        "SeniorCitizen": 1,
-        "Partner": "No",
-        "Dependents": "No",
-        "tenure": 18.0,
-        "PhoneService": "Yes",
-        "MultipleLines": "Yes",
-        "InternetService": "Fiber optic",
-        "OnlineSecurity": "No",
-        "OnlineBackup": "Yes",
-        "DeviceProtection": "No",
-        "TechSupport": "No",
-        "StreamingTV": "Yes",
-        "StreamingMovies": "No",
-        "Contract": "One year",
-        "PaperlessBilling": "Yes",
-        "PaymentMethod": "Bank transfer (automatic)",
-        "MonthlyCharges": 82.0,
-        "TotalCharges": 1476.0
-    }
-}
 
 
 # --- Helper: Query Prediction via FastAPI or In-Memory fallback ---
@@ -198,10 +131,6 @@ with st.sidebar:
     else:
         st.warning("🟠 API Offline (Using In-Memory Fallback)")
 
-    st.markdown("---")
-    st.subheader("⚡ Quick Preset Profiles")
-    selected_preset_key = st.selectbox("Load Sample Customer Profile", options=list(PRESET_PROFILES.keys()))
-    preset = PRESET_PROFILES[selected_preset_key]
 
     st.markdown("---")
     st.subheader("📊 Production Model Info")
@@ -226,8 +155,7 @@ tab1, tab2, tab3 = st.tabs([
 # TAB 1: SINGLE CUSTOMER PREDICTION
 # =========================================================================
 with tab1:
-    # Use preset if selected
-    defaults = preset if preset else {
+    defaults = {
         "gender": "Female", "SeniorCitizen": 0, "Partner": "No", "Dependents": "No",
         "tenure": 12.0, "PhoneService": "Yes", "MultipleLines": "No",
         "InternetService": "Fiber optic", "OnlineSecurity": "No", "OnlineBackup": "No",

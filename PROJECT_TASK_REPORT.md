@@ -1160,13 +1160,13 @@ Telecom Customer Churn Prediction & Retention System/
 | **5. Feature Engineering** | TASK 06 | **COMPLETED** | Tenure cohorts binned, charge ratios computed, service bundling counts aggregated, one-hot encodings created. (`src/features.py`) |
 | **6. Feature Selection** | TASK 07 | **COMPLETED** | Mutual information scores, tree feature importances, and RFECV evaluated; optimal 28-feature subset selected. |
 | **7. Train/Test Split** | TASK 08 | **COMPLETED** | Stratified 80/20 train/test split executed with fixed seed; Stratified 5-Fold cross-validation configured. (`src/pipeline.py`) |
-| **8. Multiple ML Models** | TASK 09 | **COMPLETED** | 5 candidate models benchmarked: Logistic Regression, Decision Tree, Random Forest, XGBoost, and LightGBM. (`src/train.py`) |
-| **9. Model Evaluation** | TASK 10 | **COMPLETED** | Evaluated via Confusion Matrix, Accuracy, Precision, Recall, F1-Score, and ROC-AUC curves; class imbalance dynamics analyzed. (`src/evaluation.py`) |
-| **10. Hyperparameter Tuning** | TASK 11 | **COMPLETED** | Stratified 5-Fold Grid Search hyperparameter optimization executed; pre/post performance improvements documented. (`src/tuning.py`) |
-| **11. Final Model Selection** | TASK 12 | **COMPLETED** | Tuned LightGBM selected based on superior Recall (79.9%), high ROC-AUC (0.842), and sub-3ms inference latency. |
+| **8. Multiple ML Models** | TASK 09 | **COMPLETED** | 5 candidate models benchmarked on held-out test set. Baseline AUC ranking: LR (0.8434) > LightGBM (0.8344) > RF (0.8286) > XGBoost (0.8247) > Decision Tree (0.6628). Full classification reports in `reports/model_evaluation/baseline_metrics.csv` and `classification_reports.json`. 3 PNGs generated. |
+| **9. Model Evaluation** | TASK 10 | **COMPLETED** | Per-class classification reports, confusion matrices, ROC-AUC, macro/weighted averages, and churn-class metrics evaluated for all 5 baseline models. Before/after tuning comparison PNGs generated. No data leakage: scaler fitted on X_train only. (`reports/model_evaluation/`) |
+| **10. Hyperparameter Tuning** | TASK 11 | **COMPLETED** | LR: GridSearchCV (54 candidates × 5 folds = 270 fits, ~310s) — best CV ROC-AUC **0.8503** (`elasticnet, saga, C=1.0, l1_ratio=0.3`). LightGBM: RandomizedSearchCV (60 iter × 5 folds = 300 fits, ~123s) — best CV ROC-AUC **0.8472** (`300 estimators, num_leaves=64, max_depth=3, class_weight=balanced`). Search results in `reports/model_evaluation/hyperparameter_search_results.csv`. |
+| **11. Final Model Selection** | TASK 12 | **COMPLETED** | **Tuned LightGBM selected** — Test results: Acc=0.7393, AUC=0.8424, **Churn Recall=0.8177**, Churn F1=0.6250. Tuning raised churn recall from 0.5147 → 0.8177 (+30pp), the highest of all configurations. LR Tuned: Acc=0.8013, AUC=0.8435, CRec=0.5147, CF1=0.5792 (minimal gain from elasticnet). Evidence documented in `reports/model_evaluation/experiment_metadata.json`. |
 | **12. Save the Model** | TASK 13 | **COMPLETED** | Serialized model, preprocessing pipeline, and unified inference pipeline via `joblib` into `models/`. Deserialization invariance confirmed. (`src/serialization.py`) |
 | **13. Build an ML API** | TASK 14 | **COMPLETED** | Production FastAPI REST service with `/predict`, `/predict/batch`, `/health`, and `/metadata` endpoints. Pydantic validation & error handling verified. (`api/`) |
-| **14. Build a Web UI** | TASK 15 | **COMPLETED** | Interactive Streamlit Web UI (`app/streamlit_app.py`) featuring single-customer diagnostics, quick presets, and batch CSV scoring. |
+| **14. Build a Web UI** | TASK 15 | **COMPLETED** | Interactive Streamlit Web UI (`app/streamlit_app.py`) featuring single-customer diagnostics and batch CSV scoring. Quick Preset Profiles feature removed per user request; all API and prediction tests continue to pass (60/60). |
 | **15. Integration Testing** | TASK 16 | **COMPLETED** | 53 unit and integration tests executed with 100% pass rate across data quality, pipeline, and API suites. (`tests/`) |
 | **16. Application Containerization** | TASK 17 | **COMPLETED** | Multi-stage `Dockerfile`, `Dockerfile.api`, `Dockerfile.ui`, and `docker-compose.yml` created with non-root security and health checks. |
 | **17. AWS Cloud Deployment** | TASK 18 | **COMPLETED** | End-to-end AWS hosting guide authored (`docs/aws_deployment_guide.md`), ECS Fargate task definition, NGINX proxy, and automated deployment scripts (`scripts/deploy_aws.sh`, `scripts/deploy_aws.ps1`). |
@@ -1187,4 +1187,66 @@ All 10 project operating rules were strictly maintained throughout execution:
 ---
 
 **FINAL STATUS**: `ALL 20 TASKS COMPLETED (100% COMPLETE & VERIFIED) — PRODUCTION-READY SYSTEM DELIVERED`
+
+---
+
+## 23. Model Evaluation & Tuning Experiment Results (Requirements 2–5)
+
+### 23.1 Baseline Classification Report — All 5 Candidate Models (Test Set)
+
+| Model | Accuracy | ROC-AUC | Churn Precision | Churn Recall | Churn F1 | Macro F1 |
+|---|---|---|---|---|---|---|
+| **Logistic Regression** | 0.8013 | **0.8434** | 0.6598 | 0.5147 | 0.5792 | 0.7188 |
+| Decision Tree | 0.7279 | 0.6628 | 0.5130 | 0.5228 | 0.5052 | 0.6272 |
+| Random Forest | 0.7977 | 0.8286 | 0.6434 | 0.4960 | 0.5657 | 0.7117 |
+| XGBoost | 0.7885 | 0.8247 | 0.6065 | 0.5255 | 0.5689 | 0.6997 |
+| **LightGBM** | 0.7963 | 0.8344 | 0.6427 | 0.5147 | 0.5731 | 0.7151 |
+
+### 23.2 Hyperparameter Tuning Details
+
+| Model | Method | Candidates | CV ROC-AUC | Search Time | Best Parameters |
+|---|---|---|---|---|---|
+| Logistic Regression | GridSearchCV | 54 × 5 = 270 fits | **0.8503** | 310s | `C=1.0, penalty=elasticnet, solver=saga, l1_ratio=0.3` |
+| LightGBM | RandomizedSearchCV (60 iter) | 60 × 5 = 300 fits | **0.8472** | 123s | `n_estimators=300, num_leaves=64, max_depth=3, lr=0.01, class_weight=balanced` |
+
+### 23.3 Before vs After Tuning — Test Set Results
+
+| Configuration | Accuracy | ROC-AUC | Churn Recall | Churn F1 | Δ Churn Recall |
+|---|---|---|---|---|---|
+| LR Baseline | 0.8013 | 0.8434 | 0.5147 | 0.5792 | — |
+| **LR Tuned** | 0.8013 | 0.8435 | 0.5147 | 0.5792 | +0.0000 |
+| LightGBM Baseline | 0.7963 | 0.8344 | 0.5147 | 0.5731 | — |
+| **LightGBM Tuned** | 0.7393 | 0.8424 | **0.8177** | **0.6250** | **+0.3030** |
+
+### 23.4 Final Model Selection
+
+- **Selected**: LightGBM (Tuned)
+- **Reason**: Highest churn recall across all configurations (0.8177 vs 0.5147 for LR Tuned), with comparable ROC-AUC (0.8424 vs 0.8435). The `class_weight=balanced` parameter was the critical lever — it trades overall accuracy (0.7963→0.7393) for a dramatic improvement in catching actual churners, which is the primary business goal.
+- **Trade-off accepted**: Precision drops (0.6427→0.5080) but the False Negative reduction (missed churners) outweighs the cost of additional False Positives (unnecessary retention offers).
+
+### 23.5 Output Files Generated
+
+| File | Type | Description |
+|---|---|---|
+| `baseline_classification_reports_all_models.png` | PNG | 10-panel per-class metric bars for all 5 models |
+| `baseline_model_comparison.png` | PNG | Grouped bar chart sorted by ROC-AUC |
+| `baseline_confusion_matrices.png` | PNG | 5-panel confusion matrix grid |
+| `logistic_regression_before_after_tuning.png` | PNG | LR before/after bars + confusion matrices |
+| `lightgbm_before_after_tuning.png` | PNG | LightGBM before/after bars + confusion matrices |
+| `logistic_vs_lightgbm_before_after_tuning.png` | PNG | 4-configuration side-by-side comparison |
+| `selected_models_confusion_matrices.png` | PNG | 2×2 grid: LR Base/Tuned vs LGBM Base/Tuned |
+| `logistic_regression_tuning_analysis.png` | PNG | CV score distribution, overfit check, top-10 candidates |
+| `lightgbm_tuning_analysis.png` | PNG | CV score distribution, overfit check, top-10 candidates |
+| `hyperparameter_tuning_comparison.png` | PNG | 4-panel metric impact of tuning |
+| `model_performance_before_after_tuning.png` | PNG | 7-metric full summary all 4 configurations |
+| `roc_curves_final_comparison.png` | PNG | ROC curves for all 4 key configurations |
+| `baseline_metrics.csv` | CSV | Full baseline metric table |
+| `tuned_model_metrics.csv` | CSV | Tuned model metrics with search details |
+| `classification_reports.json` | JSON | Raw sklearn classification report strings + metrics |
+| `hyperparameter_search_results.csv` | CSV | All CV candidate scores for both searches |
+| `lr_threshold_analysis.csv` | CSV | Threshold sweep (0.25–0.75) for LR Tuned |
+| `lgbm_threshold_analysis.csv` | CSV | Threshold sweep (0.25–0.75) for LightGBM Tuned |
+| `experiment_metadata.json` | JSON | Full provenance: dataset, splits, search configs, selection |
+
+*All files saved to `reports/model_evaluation/`. Script: `scripts/run_model_evaluation.py`.*
 

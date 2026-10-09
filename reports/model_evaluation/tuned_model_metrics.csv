@@ -1,0 +1,3 @@
+Model,Accuracy,ROC_AUC,Churn_Precision,Churn_Recall,Churn_F1,Macro_F1,Weighted_F1,CV_Best_ROC_AUC,Train_Time_s,Inference_ms,Search_Time_s,Best_Params
+Logistic Regression (Tuned),0.801282,0.843474,0.662069,0.514745,0.579186,0.724558,0.792688,0.85028,5.2798,9.6872,310.26,"{""C"": 1.0, ""class_weight"": null, ""l1_ratio"": 0.3, ""max_iter"": 2000, ""penalty"": ""elasticnet"", ""solver"": ""saga""}"
+LightGBM (Tuned),0.739316,0.842437,0.505804,0.817694,0.625,0.712609,0.753668,0.847196,0.3699,47.0751,122.47,"{""subsample"": 1.0, ""reg_lambda"": 0.5, ""reg_alpha"": 0.0, ""num_leaves"": 64, ""n_estimators"": 300, ""min_child_samples"": 50, ""max_depth"": 3, ""learning_rate"": 0.01, ""colsample_bytree"": 0.9, ""class_weight"": ""balanced""}"

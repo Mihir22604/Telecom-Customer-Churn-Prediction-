@@ -78,17 +78,34 @@ flowchart TD
 
 ## 📊 Machine Learning Pipeline & Model Benchmarks
 
-Five diverse model families were trained and benchmarked using Stratified 5-Fold Cross-Validation on identical training sets:
+Five diverse model families were trained and benchmarked on a held-out test set (80/20 stratified split, `random_state=42`). Preprocessing (`FeatureScaler`) fitted on training data only — zero test-set leakage.
 
-| Model Algorithm | Family / Category | Accuracy | Precision | Recall | F1-Score | ROC-AUC | Inference Latency |
-|---|---|---|---|---|---|---|---|
-| **Logistic Regression** | Linear Model (L2 Regularized) | 73.8% | 50.4% | 79.1% | 0.616 | 0.840 | **< 1.0 ms** |
-| **Decision Tree** | Non-Linear CART (Pruned) | 72.1% | 47.9% | 68.4% | 0.563 | 0.771 | < 1.0 ms |
-| **Random Forest** | Bagging Ensemble (Balanced) | 78.4% | 58.2% | 68.6% | 0.630 | 0.835 | ~ 3.5 ms |
-| **XGBoost Classifier** | Gradient Boosting (Hist) | 76.5% | 54.3% | 75.1% | 0.630 | 0.841 | ~ 4.2 ms |
-| **Tuned LightGBM (Selected)** | Leaf-Wise Gradient Boosting | **74.2%** | **50.9%** | **79.9%** | **0.622** | **0.842** | **~ 2.8 ms** |
+**Baseline Results (default hyperparameters):**
 
-> **Selection Rationale**: In customer retention, the business cost of a False Negative (failing to detect a churner who leaves) is drastically higher than a False Positive (offering a retention incentive to a customer who stays). **LightGBM achieved the highest Recall (79.9%) and ROC-AUC (0.842)** while sustaining sub-3ms inference latency, making it the superior operational model.
+| Model | Accuracy | ROC-AUC | Churn Recall | Churn F1 | Macro F1 |
+|---|---|---|---|---|---|
+| Logistic Regression | 0.8013 | **0.8434** | 0.5147 | 0.5792 | 0.7188 |
+| Decision Tree | 0.7279 | 0.6628 | 0.5228 | 0.5052 | 0.6272 |
+| Random Forest | 0.7977 | 0.8286 | 0.4960 | 0.5657 | 0.7117 |
+| XGBoost | 0.7885 | 0.8247 | 0.5255 | 0.5689 | 0.6997 |
+| LightGBM | 0.7963 | 0.8344 | 0.5147 | 0.5731 | 0.7151 |
+
+**After Hyperparameter Tuning (test set, no leakage):**
+
+| Configuration | Accuracy | ROC-AUC | Churn Recall | Churn F1 | Δ Churn Recall |
+|---|---|---|---|---|---|
+| LR Baseline | 0.8013 | 0.8434 | 0.5147 | 0.5792 | — |
+| LR Tuned (`elasticnet, saga, C=1.0`) | 0.8013 | 0.8435 | 0.5147 | 0.5792 | +0.000 |
+| LightGBM Baseline | 0.7963 | 0.8344 | 0.5147 | 0.5731 | — |
+| **✅ LightGBM Tuned (Production)** | 0.7393 | 0.8424 | **0.8177** | **0.6250** | **+0.303** |
+
+> **Selection Rationale**: Tuned LightGBM with `class_weight=balanced` raises churn recall from 0.51 → **0.82** (+30 percentage points) — the highest of all configurations. In customer retention, the business cost of a False Negative (a churner who slips through) is far higher than a False Positive (an unneeded retention offer). The accuracy trade-off (0.7963 → 0.7393) is an explicit, evidence-based decision documented in `reports/model_evaluation/experiment_metadata.json`.
+
+**Tuning Search Details:**
+- **LR**: GridSearchCV — 54 candidates × 5 folds = 270 fits (~310s) — Best CV ROC-AUC: **0.8503**
+- **LightGBM**: RandomizedSearchCV (60 iter) × 5 folds = 300 fits (~123s) — Best CV ROC-AUC: **0.8472**
+
+All classification reports, confusion matrices, ROC curves, CV search analysis, and threshold sweeps are saved to [`reports/model_evaluation/`](reports/model_evaluation/).
 
 ---
 
