@@ -1,0 +1,180 @@
+﻿model,section,class_or_metric,precision,recall,f1_score,support,value
+Logistic Regression,classification_report,No-Churn,0.84,0.9,0.87,1031.0,
+Logistic Regression,classification_report,Churn,0.66,0.51,0.58,373.0,
+Logistic Regression,classification_report,Accuracy,,,0.8,1404.0,
+Logistic Regression,classification_report,Macro Avg,0.75,0.71,0.72,1404.0,
+Logistic Regression,classification_report,Weighted Avg,0.79,0.8,0.79,1404.0,
+Logistic Regression,additional_metrics,accuracy,,,,,0.8012820512820513
+Logistic Regression,additional_metrics,roc_auc,,,,,0.8433858691553789
+Logistic Regression,additional_metrics,churn_precision,,,,,0.6620689655172414
+Logistic Regression,additional_metrics,churn_recall,,,,,0.514745308310992
+Logistic Regression,additional_metrics,churn_f1,,,,,0.579185520361991
+Logistic Regression,additional_metrics,no_churn_precision,,,,,0.8375224416517055
+Logistic Regression,additional_metrics,no_churn_recall,,,,,0.9049466537342385
+Logistic Regression,additional_metrics,no_churn_f1,,,,,0.8699300699300699
+Logistic Regression,additional_metrics,macro_precision,,,,,0.7497957035844734
+Logistic Regression,additional_metrics,macro_recall,,,,,0.7098459810226152
+Logistic Regression,additional_metrics,macro_f1,,,,,0.7245577951460305
+Logistic Regression,additional_metrics,weighted_precision,,,,,0.7909098016245295
+Logistic Regression,additional_metrics,weighted_recall,,,,,0.8012820512820513
+Logistic Regression,additional_metrics,weighted_f1,,,,,0.792688106262767
+Logistic Regression,additional_metrics,train_time_s,,,,,0.0722922999993898
+Logistic Regression,additional_metrics,inference_time_ms,,,,,2.9363000066950917
+Logistic Regression,confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,933
+Logistic Regression,confusion_matrix,Actual No-Churn / Predicted Churn,,,,,98
+Logistic Regression,confusion_matrix,Actual Churn / Predicted No-Churn,,,,,181
+Logistic Regression,confusion_matrix,Actual Churn / Predicted Churn,,,,,192
+Decision Tree,classification_report,No-Churn,0.82,0.8,0.81,1031.0,
+Decision Tree,classification_report,Churn,0.49,0.52,0.51,373.0,
+Decision Tree,classification_report,Accuracy,,,0.73,1404.0,
+Decision Tree,classification_report,Macro Avg,0.66,0.66,0.66,1404.0,
+Decision Tree,classification_report,Weighted Avg,0.73,0.73,0.73,1404.0,
+Decision Tree,additional_metrics,accuracy,,,,,0.7279202279202279
+Decision Tree,additional_metrics,roc_auc,,,,,0.6628328778379615
+Decision Tree,additional_metrics,churn_precision,,,,,0.48872180451127817
+Decision Tree,additional_metrics,churn_recall,,,,,0.5227882037533512
+Decision Tree,additional_metrics,churn_f1,,,,,0.5051813471502591
+Decision Tree,additional_metrics,no_churn_precision,,,,,0.8228855721393035
+Decision Tree,additional_metrics,no_churn_recall,,,,,0.8021338506304558
+Decision Tree,additional_metrics,no_churn_f1,,,,,0.81237721021611
+Decision Tree,additional_metrics,macro_precision,,,,,0.6558036883252908
+Decision Tree,additional_metrics,macro_recall,,,,,0.6624610271919036
+Decision Tree,additional_metrics,macro_f1,,,,,0.6587792786831845
+Decision Tree,additional_metrics,weighted_precision,,,,,0.7341084458392655
+Decision Tree,additional_metrics,weighted_recall,,,,,0.7279202279202279
+Decision Tree,additional_metrics,weighted_f1,,,,,0.7307646340597265
+Decision Tree,additional_metrics,train_time_s,,,,,0.07623430003877729
+Decision Tree,additional_metrics,inference_time_ms,,,,,2.7286999975331128
+Decision Tree,confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,827
+Decision Tree,confusion_matrix,Actual No-Churn / Predicted Churn,,,,,204
+Decision Tree,confusion_matrix,Actual Churn / Predicted No-Churn,,,,,178
+Decision Tree,confusion_matrix,Actual Churn / Predicted Churn,,,,,195
+Random Forest,classification_report,No-Churn,0.83,0.91,0.87,1031.0,
+Random Forest,classification_report,Churn,0.66,0.5,0.57,373.0,
+Random Forest,classification_report,Accuracy,,,0.8,1404.0,
+Random Forest,classification_report,Macro Avg,0.75,0.7,0.72,1404.0,
+Random Forest,classification_report,Weighted Avg,0.79,0.8,0.79,1404.0,
+Random Forest,additional_metrics,accuracy,,,,,0.7977207977207977
+Random Forest,additional_metrics,roc_auc,,,,,0.8285677509276763
+Random Forest,additional_metrics,churn_precision,,,,,0.6583629893238434
+Random Forest,additional_metrics,churn_recall,,,,,0.4959785522788204
+Random Forest,additional_metrics,churn_f1,,,,,0.5657492354740061
+Random Forest,additional_metrics,no_churn_precision,,,,,0.8325912733748887
+Random Forest,additional_metrics,no_churn_recall,,,,,0.906886517943744
+Random Forest,additional_metrics,no_churn_f1,,,,,0.8681522748375116
+Random Forest,additional_metrics,macro_precision,,,,,0.745477131349366
+Random Forest,additional_metrics,macro_recall,,,,,0.7014325351112822
+Random Forest,additional_metrics,macro_f1,,,,,0.7169507551557588
+Random Forest,additional_metrics,weighted_precision,,,,,0.7863041295351166
+Random Forest,additional_metrics,weighted_recall,,,,,0.7977207977207977
+Random Forest,additional_metrics,weighted_f1,,,,,0.7878130058328197
+Random Forest,additional_metrics,train_time_s,,,,,1.3282841999898665
+Random Forest,additional_metrics,inference_time_ms,,,,,59.49499999405816
+Random Forest,confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,935
+Random Forest,confusion_matrix,Actual No-Churn / Predicted Churn,,,,,96
+Random Forest,confusion_matrix,Actual Churn / Predicted No-Churn,,,,,188
+Random Forest,confusion_matrix,Actual Churn / Predicted Churn,,,,,185
+XGBoost,classification_report,No-Churn,0.84,0.88,0.86,1031.0,
+XGBoost,classification_report,Churn,0.62,0.53,0.57,373.0,
+XGBoost,classification_report,Accuracy,,,0.79,1404.0,
+XGBoost,classification_report,Macro Avg,0.73,0.7,0.71,1404.0,
+XGBoost,classification_report,Weighted Avg,0.78,0.79,0.78,1404.0,
+XGBoost,additional_metrics,accuracy,,,,,0.7884615384615384
+XGBoost,additional_metrics,roc_auc,,,,,0.8246685198524039
+XGBoost,additional_metrics,churn_precision,,,,,0.620253164556962
+XGBoost,additional_metrics,churn_recall,,,,,0.5254691689008043
+XGBoost,additional_metrics,churn_f1,,,,,0.5689404934687954
+XGBoost,additional_metrics,no_churn_precision,,,,,0.8373161764705882
+XGBoost,additional_metrics,no_churn_recall,,,,,0.88360814742968
+XGBoost,additional_metrics,no_churn_f1,,,,,0.8598395469561114
+XGBoost,additional_metrics,macro_precision,,,,,0.728784670513775
+XGBoost,additional_metrics,macro_recall,,,,,0.7045386581652422
+XGBoost,additional_metrics,macro_f1,,,,,0.7143900202124533
+XGBoost,additional_metrics,weighted_precision,,,,,0.7796491512257288
+XGBoost,additional_metrics,weighted_recall,,,,,0.7884615384615384
+XGBoost,additional_metrics,weighted_f1,,,,,0.7825565363074156
+XGBoost,additional_metrics,train_time_s,,,,,2.169368700007908
+XGBoost,additional_metrics,inference_time_ms,,,,,17.710499989334494
+XGBoost,confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,911
+XGBoost,confusion_matrix,Actual No-Churn / Predicted Churn,,,,,120
+XGBoost,confusion_matrix,Actual Churn / Predicted No-Churn,,,,,177
+XGBoost,confusion_matrix,Actual Churn / Predicted Churn,,,,,196
+LightGBM,classification_report,No-Churn,0.84,0.9,0.87,1031.0,
+LightGBM,classification_report,Churn,0.65,0.51,0.57,373.0,
+LightGBM,classification_report,Accuracy,,,0.8,1404.0,
+LightGBM,classification_report,Macro Avg,0.74,0.71,0.72,1404.0,
+LightGBM,classification_report,Weighted Avg,0.79,0.8,0.79,1404.0,
+LightGBM,additional_metrics,accuracy,,,,,0.7962962962962963
+LightGBM,additional_metrics,roc_auc,,,,,0.8344328497541366
+LightGBM,additional_metrics,churn_precision,,,,,0.6464646464646465
+LightGBM,additional_metrics,churn_recall,,,,,0.514745308310992
+LightGBM,additional_metrics,churn_f1,,,,,0.573134328358209
+LightGBM,additional_metrics,no_churn_precision,,,,,0.8364950316169828
+LightGBM,additional_metrics,no_churn_recall,,,,,0.8981571290009699
+LightGBM,additional_metrics,no_churn_f1,,,,,0.8662301216089804
+LightGBM,additional_metrics,macro_precision,,,,,0.7414798390408146
+LightGBM,additional_metrics,macro_recall,,,,,0.7064512186559809
+LightGBM,additional_metrics,macro_f1,,,,,0.7196822249835947
+LightGBM,additional_metrics,weighted_precision,,,,,0.7860097512310702
+LightGBM,additional_metrics,weighted_recall,,,,,0.7962962962962963
+LightGBM,additional_metrics,weighted_f1,,,,,0.7883635041712754
+LightGBM,additional_metrics,train_time_s,,,,,0.23575389996403828
+LightGBM,additional_metrics,inference_time_ms,,,,,19.06249998137355
+LightGBM,confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,926
+LightGBM,confusion_matrix,Actual No-Churn / Predicted Churn,,,,,105
+LightGBM,confusion_matrix,Actual Churn / Predicted No-Churn,,,,,181
+LightGBM,confusion_matrix,Actual Churn / Predicted Churn,,,,,192
+Logistic Regression (Tuned),classification_report,No-Churn,0.84,0.9,0.87,1031.0,
+Logistic Regression (Tuned),classification_report,Churn,0.66,0.51,0.58,373.0,
+Logistic Regression (Tuned),classification_report,Accuracy,,,0.8,1404.0,
+Logistic Regression (Tuned),classification_report,Macro Avg,0.75,0.71,0.72,1404.0,
+Logistic Regression (Tuned),classification_report,Weighted Avg,0.79,0.8,0.79,1404.0,
+Logistic Regression (Tuned),additional_metrics,accuracy,,,,,0.8012820512820513
+Logistic Regression (Tuned),additional_metrics,roc_auc,,,,,0.843474281197099
+Logistic Regression (Tuned),additional_metrics,churn_precision,,,,,0.6620689655172414
+Logistic Regression (Tuned),additional_metrics,churn_recall,,,,,0.514745308310992
+Logistic Regression (Tuned),additional_metrics,churn_f1,,,,,0.579185520361991
+Logistic Regression (Tuned),additional_metrics,macro_f1,,,,,0.7245577951460305
+Logistic Regression (Tuned),additional_metrics,weighted_f1,,,,,0.792688106262767
+Logistic Regression (Tuned),additional_metrics,train_time_s,,,,,5.2797968000522815
+Logistic Regression (Tuned),additional_metrics,inference_time_ms,,,,,9.687199955806136
+Logistic Regression (Tuned),confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,933
+Logistic Regression (Tuned),confusion_matrix,Actual No-Churn / Predicted Churn,,,,,98
+Logistic Regression (Tuned),confusion_matrix,Actual Churn / Predicted No-Churn,,,,,181
+Logistic Regression (Tuned),confusion_matrix,Actual Churn / Predicted Churn,,,,,192
+Logistic Regression (Tuned),best_hyperparameters,C,,,,,1.0
+Logistic Regression (Tuned),best_hyperparameters,class_weight,,,,,
+Logistic Regression (Tuned),best_hyperparameters,l1_ratio,,,,,0.3
+Logistic Regression (Tuned),best_hyperparameters,max_iter,,,,,2000
+Logistic Regression (Tuned),best_hyperparameters,penalty,,,,,elasticnet
+Logistic Regression (Tuned),best_hyperparameters,solver,,,,,saga
+Logistic Regression (Tuned),cross_validation,cv_best_roc_auc,,,,,0.8502800352659353
+LightGBM (Tuned),classification_report,No-Churn,0.92,0.71,0.8,1031.0,
+LightGBM (Tuned),classification_report,Churn,0.51,0.82,0.62,373.0,
+LightGBM (Tuned),classification_report,Accuracy,,,0.74,1404.0,
+LightGBM (Tuned),classification_report,Macro Avg,0.71,0.76,0.71,1404.0,
+LightGBM (Tuned),classification_report,Weighted Avg,0.81,0.74,0.75,1404.0,
+LightGBM (Tuned),additional_metrics,accuracy,,,,,0.7393162393162394
+LightGBM (Tuned),additional_metrics,roc_auc,,,,,0.842436739883972
+LightGBM (Tuned),additional_metrics,churn_precision,,,,,0.5058043117744611
+LightGBM (Tuned),additional_metrics,churn_recall,,,,,0.8176943699731903
+LightGBM (Tuned),additional_metrics,churn_f1,,,,,0.625
+LightGBM (Tuned),additional_metrics,macro_f1,,,,,0.7126091703056768
+LightGBM (Tuned),additional_metrics,weighted_f1,,,,,0.7536681689247192
+LightGBM (Tuned),additional_metrics,train_time_s,,,,,0.3699176000081934
+LightGBM (Tuned),additional_metrics,inference_time_ms,,,,,47.07509995205328
+LightGBM (Tuned),confusion_matrix,Actual No-Churn / Predicted No-Churn,,,,,733
+LightGBM (Tuned),confusion_matrix,Actual No-Churn / Predicted Churn,,,,,298
+LightGBM (Tuned),confusion_matrix,Actual Churn / Predicted No-Churn,,,,,68
+LightGBM (Tuned),confusion_matrix,Actual Churn / Predicted Churn,,,,,305
+LightGBM (Tuned),best_hyperparameters,subsample,,,,,1.0
+LightGBM (Tuned),best_hyperparameters,reg_lambda,,,,,0.5
+LightGBM (Tuned),best_hyperparameters,reg_alpha,,,,,0.0
+LightGBM (Tuned),best_hyperparameters,num_leaves,,,,,64
+LightGBM (Tuned),best_hyperparameters,n_estimators,,,,,300
+LightGBM (Tuned),best_hyperparameters,min_child_samples,,,,,50
+LightGBM (Tuned),best_hyperparameters,max_depth,,,,,3
+LightGBM (Tuned),best_hyperparameters,learning_rate,,,,,0.01
+LightGBM (Tuned),best_hyperparameters,colsample_bytree,,,,,0.9
+LightGBM (Tuned),best_hyperparameters,class_weight,,,,,balanced
+LightGBM (Tuned),cross_validation,cv_best_roc_auc,,,,,0.8471961523163924
